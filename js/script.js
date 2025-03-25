@@ -1,11 +1,55 @@
 {
     const tasks = [
-        {},
-        {},
+        {
+            content: "11111",
+            done: false,
+        },
+        {
+            content: "2222222",
+            done: true,
+        },
     ];
-    
-    const init = () => {
 
+    const render = () => {
+        let htmlString = "";
+
+        for (const task of tasks) {
+            htmlString += `
+            <li>
+            ${task.content}
+            </li>
+            `;
+        }
+
+        document.querySelector(".js-tasks").innerHTML = htmlString;
+
+    };
+
+    const addNewTask = (newTaskContent) => {
+        tasks.push({
+            content: newTaskContent,
+        });
+
+        render();
+
+    };
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const newTaskContent = document.querySelector(".js-newTask").value.trim();
+
+        if (newTaskContent === "") {
+            return;
+        }
+
+        addNewTask(newTaskContent);
+    };
+
+    const init = () => {
+        render();
+
+        const form = document.querySelector(".js-form");
+        form.addEventListener("submit", onFormSubmit);
     };
 
     init();
