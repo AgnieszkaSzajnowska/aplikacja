@@ -1,0 +1,50 @@
+.tasks {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.tasks__item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tasks__button {
+    border: none;
+    color: white;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+}
+
+.tasks__button--done {
+    background-color: green;
+}
+
+.tasks__button--done:hover {
+    background-color: rgb(2, 173, 2);
+}
+
+.tasks__button--done:active {
+    background-color: rgba(3, 209, 3, 0.781);
+}
+
+.tasks__content--done {
+    text-decoration: line-through;
+}
+
+.tasks__button--remove {
+    background-color: red;
+}
+
+.tasks__button--remove:hover {
+    background-color: rgba(238, 37, 37, 0.644);
+}
+
+.tasks__button--remove:active {
+    background-color: rgba(226, 52, 52, 0.863);
+}

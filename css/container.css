@@ -9,3 +9,10 @@ html {
 body {
     font-family: "Lato", sans-serif;
 }
+
+.container {
+    background-color: rgb(231, 228, 228);
+    max-width: 900px;
+    padding: 20px;
+    margin: 0 auto;
+}

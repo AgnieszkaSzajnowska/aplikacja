@@ -5,35 +5,20 @@
         tasks.push({
             content: newTaskContent,
         });
-
         render();
     };
 
     const removeTask = (index) => {
-
         tasks.splice(index, 1);
         render();
-    }
+    };
 
-   const toggleTaskDone = (index) => {
-    XXXXXXXXXXXXXXXX
-   }
-   
-    const render = () => {
-        let htmlString = "";
+    const toggleTaskDone = (index) => {
+        tasks[index].done = !tasks[index].done;
+        render();
+    };
 
-        for (const task of tasks) {
-            htmlString += `
-            <li>
-            <button class="js-done">done</button>
-            ${task.content}
-            <button class="js-remove">usuń</button>
-            </li>
-            `;
-        }
-
-        document.querySelector(".js-tasks").innerHTML = htmlString;
-
+    const bindEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
 
         removeButtons.forEach((removeButton, index) => {
@@ -49,17 +34,42 @@
                 toggleTaskDone(index);
             });
         });
+    }
+
+    const render = () => {
+        let htmlString = "";
+
+        for (const task of tasks) {
+            htmlString += `
+            <li class="tasks__item ${task.done ? "tasks__item--done" : ""}">
+            <button class="tasks__button tasks__button--done js-done">
+            ${task.done ? "✓" : ""} 
+            </button>
+            <span class="tasks__content ${task.done ? "tasks__content--done" : ""}">
+            ${task.content}
+            </span>
+            <button class="tasks__button tasks__button--remove js-remove">🗑</button>
+            </li>
+            `;
+        }
+
+        document.querySelector(".js-tasks").innerHTML = htmlString;
+
+        bindEvents();
     };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const newTaskContent = document.querySelector(".js-newTask").value.trim();
+
+        const newTaskElement = document.querySelector(".js-newTask");
+        const newTaskContent = newTaskElement.value.trim();
 
         if (newTaskContent === "") {
             return;
         }
-
         addNewTask(newTaskContent);
+        newTaskElement.value = "";
+        newTaskElement.focus();
     };
 
     const init = () => {
