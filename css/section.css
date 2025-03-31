@@ -3,7 +3,43 @@
     background-color: white;
 }
 .section__header {
-    padding: 10px;
+    padding: 20px;
     margin: 0;
     border-bottom: 1px solid #ddd;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media(max-width: 767px) {
+    .section__header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;    
+    }
+}
+
+.section__tasksButtons {
+    color: teal;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media(max-width: 767px) {
+.section__tasksButtons {
+    flex-basis: 100%;
+    margin: 10px;
+    }
+}
+
+.section__tasksButtons:hover {
+    color: rgb(2, 180, 180);
+}
+
+.section__tasksButtons:disabled {
+    color: grey;
 }
